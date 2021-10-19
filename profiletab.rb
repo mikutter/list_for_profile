@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require_relative 'listlist'
-require 'gtk2'
+require 'gtk3'
 
 module Plugin::ListForProfile
   class ProfileTab < Plugin::ListForProfile::ListList
