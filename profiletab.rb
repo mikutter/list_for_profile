@@ -19,6 +19,7 @@ module Plugin::ListForProfile
       @locked = {}
       super()
       self.creatable = self.updatable = self.deletable = false
+      self.hexpand = true
       set_auto_getter(@plugin, true) do |service, list, iter|
         iter[MEMBER] = list.member?(@dest_user)
         iter[NAME] = "@#{list[:user].idname}/#{list[:name]}"
