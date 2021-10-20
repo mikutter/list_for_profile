@@ -25,7 +25,7 @@ module Plugin::ListForProfile
         iter[NAME] = "@#{list[:user].idname}/#{list[:name]}"
         iter[LIST] = list
         iter[SERVICE] = service end
-      toggled = get_column(0).cell_renderers[0]
+      toggled = get_column(0).cells[0]
       toggled.activatable = false
       Enumerator.new{|y|
         Plugin.filtering(:worlds, y)
