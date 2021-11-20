@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require_relative 'listlist'
-require 'gtk2'
+require 'gtk3'
 
 module Plugin::ListForProfile
   class ProfileTab < Plugin::ListForProfile::ListList
@@ -19,12 +19,13 @@ module Plugin::ListForProfile
       @locked = {}
       super()
       self.creatable = self.updatable = self.deletable = false
+      self.hexpand = true
       set_auto_getter(@plugin, true) do |service, list, iter|
         iter[MEMBER] = list.member?(@dest_user)
         iter[NAME] = "@#{list[:user].idname}/#{list[:name]}"
         iter[LIST] = list
         iter[SERVICE] = service end
-      toggled = get_column(0).cell_renderers[0]
+      toggled = get_column(0).cells[0]
       toggled.activatable = false
       Enumerator.new{|y|
         Plugin.filtering(:worlds, y)
